@@ -73,8 +73,6 @@ class DefaultController extends Controller
            dump($node->labels());
         }
 
-
-
         return $this->render('all.html.twig');
     }
 }
