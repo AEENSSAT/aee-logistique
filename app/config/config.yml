@@ -78,4 +78,4 @@ neo4j:
       host: localhost # default
       port: 7687 # optional, will be set to the proper driver's default port if not provided
       username: neo4j # default
-      password: '&Apv115qun' # default
+      password: '' # default
