@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+class SecurityController extends Controller
+{
+    /**
+    * @Route("/login", name="login")
+    */
+    public function loginAction(Request $request, AuthenticationUtils $authUtils)
+    {
+
+        // get the login error if there is one
+        $error = $authUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authUtils->getLastUsername();
+
+        return $this->render('login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ));
+    }
+
+    /**
+     * @Route("/login_check", name="security_login_check")
+     */
+    public function loginCheckAction()
+    {
+        $this->redirectToRoute('persons');
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logoutAction()
+    {
+
+    }
+
+}

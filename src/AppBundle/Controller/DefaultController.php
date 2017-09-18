@@ -18,7 +18,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $em = $this->get('neo4j.entity_manager');
 
         // Retrieve from database
